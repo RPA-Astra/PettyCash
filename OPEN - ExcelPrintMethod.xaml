@@ -1,0 +1,802 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="excelPath" Type="InArgument(x:String)" />
+    <x:Property Name="printType" Type="InArgument(x:String)" />
+    <x:Property Name="printPathAndName" Type="InArgument(x:String)" />
+    <x:Property Name="printArea" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1239,2595</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <ueab:SequenceX DisplayName="Choose Print Type in Excel" sap:VirtualizedContainerService.HintSize="514,2530" sap2010:WorkflowViewState.IdRef="SequenceX_1">
+    <ueab:SequenceX.Variables>
+      <Variable x:TypeArguments="x:String" Name="currentType" />
+      <Variable x:TypeArguments="x:Int32" Name="indexCurrentDropdown" />
+      <Variable x:TypeArguments="x:Int32" Name="indexLastDropdown" />
+      <Variable x:TypeArguments="x:Boolean" Name="isFindPrintersOpen" />
+      <Variable x:TypeArguments="x:String" Name="currentPrintArea" />
+    </ueab:SequenceX.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;===***=== Open Source - Choose Print Type in Excel - START ===***===&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <Sequence DisplayName="Check argumes isNull" sap:VirtualizedContainerService.HintSize="452,66" sap2010:WorkflowViewState.IdRef="Sequence_25">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[excelPath = &quot;&quot;]" DisplayName="excel Path null" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="304,153.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[excelPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["test - " + DateTime.Now.ToString("ddMMyyyy")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <If Condition="[printType = &quot;&quot;]" DisplayName="Print type null" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[printType]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">Microsoft Print to PDF</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <If Condition="[printArea = &quot;&quot;]" DisplayName="Print Area null" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[printArea]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["Print Active Sheets"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_24">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,2108" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[excelPath]">
+      <ueab:ExcelApplicationCard.Body>
+        <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Choose Print type" sap:VirtualizedContainerService.HintSize="418,1842" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <Sequence DisplayName="Open Print window" sap:VirtualizedContainerService.HintSize="376,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Print Shortcut" sap:VirtualizedContainerService.HintSize="334,178" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][d(ctrl)]p[u(ctrl)][u(hk)]" Version="V1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NKeyboardShortcuts>
+              <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+            </Sequence>
+            <Sequence DisplayName="Search print type" sap:VirtualizedContainerService.HintSize="376,582" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not currentType.Contains(printType)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="334,490" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                <ui:InterruptibleDoWhile.Body>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,325" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGetText DisplayName="Get Text 'Printer'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NGetText_1" InScope="[Excel]" ScopeIdentifier="Excel" Version="V1">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="245, 371, 369, 63" ElementType="DropDown" FriendlyName="'Microsoft Print to PDF'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Which Printer' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Which Printer' role='ComboBox' automationid='' /&gt;" Guid="c22d64c7-1951-460c-999c-da3fde5150ed" InformativeScreenshot="95e809101086b1e6d9271f4319643f93.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' omit:title='test - 15082022 - Excel' /&gt;" SearchSteps="Selector, FuzzySelector" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="245, 323, 93, 45" ElementType="Text" FriendlyName="'Printer'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUILabel' name='Printer' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUILabel' name='Printer' role='Text' automationid='' check:fulltext='Printer' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGEAAAAxCAYAAADKiMdUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMRSURBVHhe7Zm9ihVBEEZ9FXNfwFxMZVMxMzEyERE2UjPRxEA008DAjUQEwzUyMNFMY8HExFcYOZf5pCi6e7rvz26xUweaO9tTt7qqvu6Z7ruXpuTcSRECkCIEIEUIQIoQgBQhAClCAFKEAKQIAUgRApAiBCBFCECKEIAUIQBFES7fu15tVx/fnG69ejC9/fJxtt6dh+9fbHzfefNo7lkXwyLYdvT87vT775/5W9uDH/lcI00RSnz/9XMzc68c39jYXHtye76zPS9PTzZCPP30eu45DKxeVvGHb6dzTwyGRRCff3z9L8Shi7cvtOIujAhw/92zjd0+VsNZcCFFIJle2wikCAFYnQjadvIJvEN4Kcqel7HwthZ/j90Y1zwC5Ytr+ko7NX2/1eTbQ37ErHcfDSFt7B6NJ5+tvMVOIrDbwI6zg8cGY1/iJMG1TdwHbqn5ofD4Ymz+Vp8XQjsvjWu/q1YqDGcW+WUM7LzwLdF9vBq/lONOIuAYO17QHhsMSZCUDdpeW1uP7jEGSTAm22QLM1bJlnwIxbv0OJIAFNrbMrb88OmxuSzlLbYWgdmDDcn7ooCC0axrYQP36B6t5cfGU6NHBPmpzXSgXyvQ+xrJWwyLoAOPbEpLGWzxlmZerwglsS1aDbXxekSoFdcjsfxPLSN5i6YIrUbCrd+PFExrZooeEXpm1VKRl+7Tz31m8RKsBmwRzTKStxgSAcckwiyoLVUxUrweEUrvHY+KXFudSyK04iiBLc0iHz15i51ezC1GitdKvnXPoyLXbHtFGG0W+ejJWxxchJ7itWxH/OxLBB4x2PY2y0i8IkUwjIxVYxsfKYJBh0+/4xlhJF6RIhi042EDsrTxqDESr1iVCDrftP7/odNyz2ooCTUSr1iVCBSf+/407K91YEO00gGRPsYonQVG4hWrEoECUzhstAPi09vzwxtCYWdtZa/+0qFuJF6xKhHA/7RMIWsnfw598mnteVTVvjMSryiKkJwtKUIAUoQApAgBSBECkCIEIEUIQIoQgBQhAClCAFKEAKQI5840/QP4zAZyliYX6wAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                      <uix:NGetText.Text>
+                        <OutArgument x:TypeArguments="x:String">[currentType]</OutArgument>
+                      </uix:NGetText.Text>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NGetText>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot; ==**== Current Type : &quot; + currentType + &quot; ==**==&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+                      <ui:IfElseIf.ConditionBlocks>
+                        <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                          <ui:IfElseIfBlock BlockType="If" Condition="[currentType.Contains(printType)]">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,205" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Found Print type&quot;]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LogMessage>
+                                <ui:Break sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Break_2" />
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="Else">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,712" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[indexLastDropdown]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[indexLastDropdown + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <uix:NClick ClickType="Single" DisplayName="Click 'Printer'" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="NClick_1" InScope="[Excel]" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="Excel" Version="V1">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable DesignTimeRectangle="245, 371, 369, 63" ElementType="DropDown" FriendlyName="'Microsoft Print to PDF'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Which Printer' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Which Printer' role='ComboBox' automationid='' /&gt;" Guid="b4a30479-4264-47b6-b7f7-d952391a9ad8" ImageBase64="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" InformativeScreenshot="330c899df165bc75333937f44726bd46.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' omit:title='test - 15082022 - Excel' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="245, 323, 93, 45" ElementType="Text" FriendlyName="'Printer'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUILabel' name='Printer' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Printer' /&gt;&lt;uia cls='NetUILabel' name='Printer' role='Text' automationid='' check:fulltext='Printer' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGEAAAAxCAYAAADKiMdUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMRSURBVHhe7Zm9ihVBEEZ9FXNfwFxMZVMxMzEyERE2UjPRxEA008DAjUQEwzUyMNFMY8HExFcYOZf5pCi6e7rvz26xUweaO9tTt7qqvu6Z7ruXpuTcSRECkCIEIEUIQIoQgBQhAClCAFKEAKQIAUgRApAiBCBFCECKEIAUIQBFES7fu15tVx/fnG69ejC9/fJxtt6dh+9fbHzfefNo7lkXwyLYdvT87vT775/5W9uDH/lcI00RSnz/9XMzc68c39jYXHtye76zPS9PTzZCPP30eu45DKxeVvGHb6dzTwyGRRCff3z9L8Shi7cvtOIujAhw/92zjd0+VsNZcCFFIJle2wikCAFYnQjadvIJvEN4Kcqel7HwthZ/j90Y1zwC5Ytr+ko7NX2/1eTbQ37ErHcfDSFt7B6NJ5+tvMVOIrDbwI6zg8cGY1/iJMG1TdwHbqn5ofD4Ymz+Vp8XQjsvjWu/q1YqDGcW+WUM7LzwLdF9vBq/lONOIuAYO17QHhsMSZCUDdpeW1uP7jEGSTAm22QLM1bJlnwIxbv0OJIAFNrbMrb88OmxuSzlLbYWgdmDDcn7ooCC0axrYQP36B6t5cfGU6NHBPmpzXSgXyvQ+xrJWwyLoAOPbEpLGWzxlmZerwglsS1aDbXxekSoFdcjsfxPLSN5i6YIrUbCrd+PFExrZooeEXpm1VKRl+7Tz31m8RKsBmwRzTKStxgSAcckwiyoLVUxUrweEUrvHY+KXFudSyK04iiBLc0iHz15i51ezC1GitdKvnXPoyLXbHtFGG0W+ejJWxxchJ7itWxH/OxLBB4x2PY2y0i8IkUwjIxVYxsfKYJBh0+/4xlhJF6RIhi042EDsrTxqDESr1iVCDrftP7/odNyz2ooCTUSr1iVCBSf+/407K91YEO00gGRPsYonQVG4hWrEoECUzhstAPi09vzwxtCYWdtZa/+0qFuJF6xKhHA/7RMIWsnfw598mnteVTVvjMSryiKkJwtKUIAUoQApAgBSBECkCIEIEUIQIoQgBQhAClCAFKEAKQI5840/QP4zAZyliYX6wAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NClick.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NClick>
+                                <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[indexCurrentDropdown &lt;&gt; indexLastDropdown]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+                                  <ui:InterruptibleDoWhile.Body>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,242" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][k(down)][u(hk)]" Version="V1">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uix:NKeyboardShortcuts>
+                                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Int32">[indexCurrentDropdown]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Int32">[indexCurrentDropdown + 1]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </ui:InterruptibleDoWhile.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:InterruptibleDoWhile>
+                                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_3" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NKeyboardShortcuts>
+                                <ui:UiElementExists DisplayName="Element Exists 'excel.exe  Find Printers'" Exists="[isFindPrintersOpen]" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                                  <ui:UiElementExists.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c579c2d6-2076-48aa-b80b-5a4bca291729" InformativeScreenshot="5de8efee2277041f161e71e15e9250f8" Selector="&lt;wnd app='excel.exe' cls='#32770' title='Find Printers' /&gt;" TimeoutMS="4000">
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:UiElementExists.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:UiElementExists>
+                                <If Condition="[isFindPrintersOpen = True]" DisplayName="Close Find Printer Window" sap:VirtualizedContainerService.HintSize="484,369" sap2010:WorkflowViewState.IdRef="If_4">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="304,243" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_4" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][k(esc)][u(hk)]" Version="V1">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uix:NKeyboardShortcuts>
+                                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Int32">[indexLastDropdown]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Int32">[indexLastDropdown + 2]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                        </sc:BindingList>
+                      </ui:IfElseIf.ConditionBlocks>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:IfElseIf>
+                  </Sequence>
+                </ui:InterruptibleDoWhile.Body>
+              </ui:InterruptibleDoWhile>
+            </Sequence>
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[indexLastDropdown]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[indexCurrentDropdown]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <Sequence DisplayName="Choose Print Area" sap:VirtualizedContainerService.HintSize="376,582" sap2010:WorkflowViewState.IdRef="Sequence_22">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not currentPrintArea.Contains(printArea)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="334,490" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_4">
+                <ui:InterruptibleDoWhile.Body>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,325" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGetText DisplayName="Get Text 'Settings'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NGetText_2" InScope="[Excel]" ScopeIdentifier="Excel" Version="V1">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="245, 524, 369, 63" ElementType="DropDown" FriendlyName="'Print Active Sheets'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Print What' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Print What' role='ComboBox' automationid='' /&gt;" Guid="7ff04444-9b06-4510-a6fd-3f96c43a18fc" InformativeScreenshot="b878a3391aef842a9d62a44a421414e9.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' omit:title='test - 15082022 - Excel' /&gt;" SearchSteps="Selector, FuzzySelector" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="245, 476, 110, 45" ElementType="Text" FriendlyName="'Settings'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUILabel' name='Settings' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUILabel' name='Settings' role='Text' automationid='' check:fulltext='Settings' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHIAAAAxCAYAAAAGEf2/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAARzSURBVHhe7Zg/j05BFId9Fb0voBetaEWnUWlEJCp0QqMQOgoFlYhEuSqFho5aotH4Clce3p+cnHtm7sy7d++u2fMkk707f885v5m5575npmQIUshBSCEHIYUchBRyEFLIQUghByGFHIQUchBSyEFIIQchhRyEFHIQUshBqAr55fu36darR9OFB9emszcv/ivn71+Zrj67Pb38+G7X8+Ry982TPzZff3FvVzMmRSER0IoXlcuPb+x6n1ywUfaOTCgkuxfHz925ND09eD39+PVz1/IXTurD98+PbJdz0jnxbz8f7GpiWvphP2Ji78jMhMRxifjh66dd7bboFC0J2drvNDATkh1OcHi3HBcpZD8zIU9CcFLIfopCcsUeFylkPzMhlegQpMNCgLmqed8yp+aNNok+E2qFPq39hPrbOuHbSOp4tp9bPFPnE74Skc/MoWSLdupK8WUd+mqTqpTiJmZCkuBo8GGyUm0ICt+dGOIDZIOj7JKiINBHdRT6tPYTXiyLbcNvPx9287/qamLSpvyCIp8pdl4ybZ6p92CD1mSMxls7SsyEBAKhgSzee3VJxGgsny4YR3vkDKh9ad2Wfi1C8s2swGGfhbklRDSHkC0EPbKHU8Y8EiXynXjRRvz8psGu2sEKhQTrgBb2TkZoE9R2MPVyKHK6RSBo6dciJCUKrJBPxCOixWewt51fT23EZR+KQgJG+V94ot1iqQlkkfPRLjsOIZc2qTZ1tFarz6DbygvJ2Ki+laqQAift/Y9TkdEyhp25BJuBvtEO3FrIluCV1tJJavEZFCO/puJBYc5emoQUGKHdR/E/mteCFqF5PFsLya2zhNbiJrHw7mudA0pCgm4/Dgq21W4+T5eQwOQ6nSxoryQFprd4thYyavNoLd+3Zw6oCQmaj0J8uYpbcpNuIQExdTLtj9EygjYMbS0e6pjnNAoJCKdMmr6UpdxkLyFBDliDep0qcdqFtHCV69DUsuJVhdTHbpSJ9vA/Cansu0eYnv5gb0D/jhZ7C6k02orGgtRxJdSugSX+JyG5BqmntLzLNE+PkLBk60zIkuIW0mPd3z6IkcAlSmIrmbLv34iWfrUALAXHUhISZAd/a+g0UnqFVEZbsnUmJJ25i1nU7zACT71EjAy31wDt0S6lDoOYJ0IpvX8neOFb+tXEqrV5akLij41JFDetpY3uheRAUBfdLtRp/iieMBNSA5YKBvnACk4swVVfm8VKZAp9IphXdmgsf30QW/opgJEAtTYPc9f62luKgm/yWXWMRRSeqbeoniJfKDyrvnZbzoQkOAxAKCsGhf854q2/PDCPdURzMLf/McHDGrqyNC4as9SvJlatzSM/an118mzcEAJ/ddJKQoLi5TcEMS+dRLF3spPshzL76LV0GFLIjVlKWvYlhdwQ+05vfT21kkJuSCljXYMUcgX4DKolgSQ4SpY4kWufRkghV0DZrwqiqdgMlAz2KESEFHIlyEajTzbEI0OtfQOuQQo5CCnkIKSQg5BCDkIKOQTT9BsQB7cKH//uEQAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                      <uix:NGetText.Text>
+                        <OutArgument x:TypeArguments="x:String">[currentPrintArea]</OutArgument>
+                      </uix:NGetText.Text>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NGetText>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot; ==**== Current Area : &quot; + currentPrintArea + &quot; ==**==&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+                      <ui:IfElseIf.ConditionBlocks>
+                        <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                          <ui:IfElseIfBlock BlockType="If" Condition="[currentPrintArea.Contains(printArea)]">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,205" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Found Print area&quot;]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LogMessage>
+                                <ui:Break sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Break_3" />
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="Else">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,803" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[indexLastDropdown]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[indexLastDropdown + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <uix:NClick ClickType="Single" DisplayName="Click 'Settings'" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="NClick_2" InScope="[Excel]" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="Excel" Version="V1">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable DesignTimeRectangle="245, 524, 369, 63" ElementType="DropDown" FriendlyName="'Print Entire Workbook'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Print What' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Print What' role='ComboBox' automationid='' /&gt;" Guid="0cc81dda-1e2a-4839-9abd-f0d65e55777a" ImageBase64="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" InformativeScreenshot="04137bdf974292cc1552fcfb0be47136.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' omit:title='test - 15082022 - Excel' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="245, 476, 110, 45" ElementType="Text" FriendlyName="'Settings'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUILabel' name='Settings' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUILabel' name='Settings' role='Text' automationid='' check:fulltext='Settings' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHIAAAAxCAYAAAAGEf2/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAARzSURBVHhe7Zg/j05BFId9Fb0voBetaEWnUWlEJCp0QqMQOgoFlYhEuSqFho5aotH4Clce3p+cnHtm7sy7d++u2fMkk707f885v5m5575npmQIUshBSCEHIYUchBRyEFLIQUghByGFHIQUchBSyEFIIQchhRyEFHIQUshBqAr55fu36darR9OFB9emszcv/ivn71+Zrj67Pb38+G7X8+Ry982TPzZff3FvVzMmRSER0IoXlcuPb+x6n1ywUfaOTCgkuxfHz925ND09eD39+PVz1/IXTurD98+PbJdz0jnxbz8f7GpiWvphP2Ji78jMhMRxifjh66dd7bboFC0J2drvNDATkh1OcHi3HBcpZD8zIU9CcFLIfopCcsUeFylkPzMhlegQpMNCgLmqed8yp+aNNok+E2qFPq39hPrbOuHbSOp4tp9bPFPnE74Skc/MoWSLdupK8WUd+mqTqpTiJmZCkuBo8GGyUm0ICt+dGOIDZIOj7JKiINBHdRT6tPYTXiyLbcNvPx9287/qamLSpvyCIp8pdl4ybZ6p92CD1mSMxls7SsyEBAKhgSzee3VJxGgsny4YR3vkDKh9ad2Wfi1C8s2swGGfhbklRDSHkC0EPbKHU8Y8EiXynXjRRvz8psGu2sEKhQTrgBb2TkZoE9R2MPVyKHK6RSBo6dciJCUKrJBPxCOixWewt51fT23EZR+KQgJG+V94ot1iqQlkkfPRLjsOIZc2qTZ1tFarz6DbygvJ2Ki+laqQAift/Y9TkdEyhp25BJuBvtEO3FrIluCV1tJJavEZFCO/puJBYc5emoQUGKHdR/E/mteCFqF5PFsLya2zhNbiJrHw7mudA0pCgm4/Dgq21W4+T5eQwOQ6nSxoryQFprd4thYyavNoLd+3Zw6oCQmaj0J8uYpbcpNuIQExdTLtj9EygjYMbS0e6pjnNAoJCKdMmr6UpdxkLyFBDliDep0qcdqFtHCV69DUsuJVhdTHbpSJ9vA/Cansu0eYnv5gb0D/jhZ7C6k02orGgtRxJdSugSX+JyG5BqmntLzLNE+PkLBk60zIkuIW0mPd3z6IkcAlSmIrmbLv34iWfrUALAXHUhISZAd/a+g0UnqFVEZbsnUmJJ25i1nU7zACT71EjAy31wDt0S6lDoOYJ0IpvX8neOFb+tXEqrV5akLij41JFDetpY3uheRAUBfdLtRp/iieMBNSA5YKBvnACk4swVVfm8VKZAp9IphXdmgsf30QW/opgJEAtTYPc9f62luKgm/yWXWMRRSeqbeoniJfKDyrvnZbzoQkOAxAKCsGhf854q2/PDCPdURzMLf/McHDGrqyNC4as9SvJlatzSM/an118mzcEAJ/ddJKQoLi5TcEMS+dRLF3spPshzL76LV0GFLIjVlKWvYlhdwQ+05vfT21kkJuSCljXYMUcgX4DKolgSQ4SpY4kWufRkghV0DZrwqiqdgMlAz2KESEFHIlyEajTzbEI0OtfQOuQQo5CCnkIKSQg5BCDkIKOQTT9BsQB7cKH//uEQAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NClick.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NClick>
+                                <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[indexCurrentDropdown &lt;&gt; indexLastDropdown]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_3">
+                                  <ui:InterruptibleDoWhile.Body>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,243" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_5" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][k(down)][u(hk)]" Version="V1">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uix:NKeyboardShortcuts>
+                                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Int32">[indexCurrentDropdown]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Int32">[indexCurrentDropdown + 1]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </ui:InterruptibleDoWhile.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:InterruptibleDoWhile>
+                                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_6" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NKeyboardShortcuts>
+                                <uix:NGetText DisplayName="Get Text 'Settings'" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="NGetText_3" InScope="[Excel]" ScopeIdentifier="Excel" Version="V1">
+                                  <uix:NGetText.Target>
+                                    <uix:TargetAnchorable DesignTimeRectangle="245, 524, 369, 63" ElementType="DropDown" FriendlyName="'Print Active Sheets'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Print What' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUIDropdownAnchor' name='Print What' role='ComboBox' automationid='' /&gt;" Guid="7ff04444-9b06-4510-a6fd-3f96c43a18fc" InformativeScreenshot="b878a3391aef842a9d62a44a421414e9.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' omit:title='test - 15082022 - Excel' /&gt;" SearchSteps="Selector, FuzzySelector" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="245, 476, 110, 45" ElementType="Text" FriendlyName="'Settings'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUILabel' name='Settings' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIElement' name='Settings' /&gt;&lt;uia cls='NetUILabel' name='Settings' role='Text' automationid='' check:fulltext='Settings' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHIAAAAxCAYAAAAGEf2/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAARzSURBVHhe7Zg/j05BFId9Fb0voBetaEWnUWlEJCp0QqMQOgoFlYhEuSqFho5aotH4Clce3p+cnHtm7sy7d++u2fMkk707f885v5m5575npmQIUshBSCEHIYUchBRyEFLIQUghByGFHIQUchBSyEFIIQchhRyEFHIQUshBqAr55fu36darR9OFB9emszcv/ivn71+Zrj67Pb38+G7X8+Ry982TPzZff3FvVzMmRSER0IoXlcuPb+x6n1ywUfaOTCgkuxfHz925ND09eD39+PVz1/IXTurD98+PbJdz0jnxbz8f7GpiWvphP2Ji78jMhMRxifjh66dd7bboFC0J2drvNDATkh1OcHi3HBcpZD8zIU9CcFLIfopCcsUeFylkPzMhlegQpMNCgLmqed8yp+aNNok+E2qFPq39hPrbOuHbSOp4tp9bPFPnE74Skc/MoWSLdupK8WUd+mqTqpTiJmZCkuBo8GGyUm0ICt+dGOIDZIOj7JKiINBHdRT6tPYTXiyLbcNvPx9287/qamLSpvyCIp8pdl4ybZ6p92CD1mSMxls7SsyEBAKhgSzee3VJxGgsny4YR3vkDKh9ad2Wfi1C8s2swGGfhbklRDSHkC0EPbKHU8Y8EiXynXjRRvz8psGu2sEKhQTrgBb2TkZoE9R2MPVyKHK6RSBo6dciJCUKrJBPxCOixWewt51fT23EZR+KQgJG+V94ot1iqQlkkfPRLjsOIZc2qTZ1tFarz6DbygvJ2Ki+laqQAift/Y9TkdEyhp25BJuBvtEO3FrIluCV1tJJavEZFCO/puJBYc5emoQUGKHdR/E/mteCFqF5PFsLya2zhNbiJrHw7mudA0pCgm4/Dgq21W4+T5eQwOQ6nSxoryQFprd4thYyavNoLd+3Zw6oCQmaj0J8uYpbcpNuIQExdTLtj9EygjYMbS0e6pjnNAoJCKdMmr6UpdxkLyFBDliDep0qcdqFtHCV69DUsuJVhdTHbpSJ9vA/Cansu0eYnv5gb0D/jhZ7C6k02orGgtRxJdSugSX+JyG5BqmntLzLNE+PkLBk60zIkuIW0mPd3z6IkcAlSmIrmbLv34iWfrUALAXHUhISZAd/a+g0UnqFVEZbsnUmJJ25i1nU7zACT71EjAy31wDt0S6lDoOYJ0IpvX8neOFb+tXEqrV5akLij41JFDetpY3uheRAUBfdLtRp/iieMBNSA5YKBvnACk4swVVfm8VKZAp9IphXdmgsf30QW/opgJEAtTYPc9f62luKgm/yWXWMRRSeqbeoniJfKDyrvnZbzoQkOAxAKCsGhf854q2/PDCPdURzMLf/McHDGrqyNC4as9SvJlatzSM/an118mzcEAJ/ddJKQoLi5TcEMS+dRLF3spPshzL76LV0GFLIjVlKWvYlhdwQ+05vfT21kkJuSCljXYMUcgX4DKolgSQ4SpY4kWufRkghV0DZrwqiqdgMlAz2KESEFHIlyEajTzbEI0OtfQOuQQo5CCnkIKSQg5BCDkIKOQTT9BsQB7cKH//uEQAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NGetText.Target>
+                                  <uix:NGetText.Text>
+                                    <OutArgument x:TypeArguments="x:String">[currentPrintArea]</OutArgument>
+                                  </uix:NGetText.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NGetText>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[currentPrintArea]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LogMessage>
+                                <If Condition="[currentPrintArea.Contains(&quot;Print Selection&quot;)]" DisplayName="if current print selection" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Int32">[indexLastDropdown]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Int32">[indexLastDropdown + 1]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                        </sc:BindingList>
+                      </ui:IfElseIf.ConditionBlocks>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:IfElseIf>
+                  </Sequence>
+                </ui:InterruptibleDoWhile.Body>
+              </ui:InterruptibleDoWhile>
+            </Sequence>
+            <uix:NClick ClickType="Single" DisplayName="Click 'Print'" sap:VirtualizedContainerService.HintSize="376,156" sap2010:WorkflowViewState.IdRef="NClick_3" InScope="[Excel]" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="Excel" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="163, 123, 82, 82" ElementType="Button" FriendlyName="'Print'" FullSelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIStickyButton' name='Print' /&gt;" FuzzySelectorArgument="&lt;uia cls='NetUIElement' name='Print' /&gt;&lt;uia cls='NetUISlabContainer' name='Print' /&gt;&lt;uia cls='NetUIStickyButton' name='Print' role='Button' automationid='' check:fulltext='Print' /&gt;" Guid="21ca0ec7-b4f7-4b75-878c-2fde66bf7328" ImageBase64="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" InformativeScreenshot="a1c495f37cf46e973ca7730562bd9c35.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='Template Print - Excel' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <If Condition="[printType.Contains(&quot;Microsoft Print to PDF&quot;)]" DisplayName="if print to PDF" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="If_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,741" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                  <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: Save Print Output As" sap:VirtualizedContainerService.HintSize="434,587" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="b21cce0b-5a8a-4752-a894-1ae4442324a3" Version="V2">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,298" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBetweenKeys="0.1" DisplayName="Type Into" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InScope="[Excel]" ScopeIdentifier="Excel" Text="[printPathAndName]" Version="V1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NTypeInto>
+                          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                          <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_8" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NKeyboardShortcuts>
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="871, 466, 640, 480" FilePath="C:\Program Files\Microsoft Office\Office15\excel.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHfSURBVEhLxdbbK4NhGADwlf9j27fcKTldmAsXDtuknCdGUtw6zGnLzByWSCsXkilyo3CzixklI1yImjRNuJIUCS2xMdbjeZ+WlMP2bW956unt/Z7v67f3fZ++b5JYQtZekClry2+UtebbZC1569KWvOtISVwIPWqp0K0uFrpURnmnakHeUeiV6wsAAUAAEAAEAAGIPBI9FMaiKYVBsysYNH4EAAFAABAABIAHAAgAAiAGoNrfGcC0xQ1Ei2DohRAuK2Dxdf71WkyAclAH6aaKxIF13x4cX52DdlJPQEZ/FS019P4GyoFaUVvE4htgddqp4PJuEzC+Okfz+R0Hny1K6SuD+yc//eKc4Xq4fXyA55cAZJmr+Z3BmGuWip6LExqn3UtxdRGLH4FUcwU8Bp/oBjammcr5dlG6peoTYAecPVDDF7BvLVNx58xD48LeCr8tyrbq6IBv/HeQZq6klbB5rrWBzwoWD9aoMOKcoTad3lyiucOzkTiQaqmEo8tTOMTuSektJSBnqA7ew2FK1Whz4lv026siuVMDWX1aPof8Ly+7eLqINQc+/8plBb/kK+YEA+wI7CMQEANEPojiAgEBgRIETAgsIuDjCvwUCCQhwP62NCEwgYAbgdtIOUpIJB+qtW4DPfWRKAAAAABJRU5ErkJggg==" InformativeScreenshot="886b71ae1ed53f51d91d971970b100fb.png" Selector="&lt;wnd app='excel.exe' cls='#32770' title='Save Print Output As' /&gt;" />
+                    </uix:NApplicationCard.TargetApp>
+                  </uix:NApplicationCard>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ueab:ExcelApplicationCard.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ueab:ExcelApplicationCard>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;===***=== Open Source - Choose Print Type in Excel - FINISH ===***===&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </ueab:SequenceX>
+</Activity>
